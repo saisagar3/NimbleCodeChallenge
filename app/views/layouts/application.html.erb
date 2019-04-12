@@ -18,6 +18,8 @@
 		  </div>
 	  <% end %>
 	  <div id="container">
+		<%= link_to "Courses", courses_path, class: 'nav-link' %>
+
 		  <div id="user_status">
 			  <% if user_signed_in? %>
 				  Welcome <%= current_user.first_name %>! Not you?
