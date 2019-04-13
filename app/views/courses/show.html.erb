@@ -19,6 +19,8 @@
   <strong>End date:</strong>
   <%= @course.end_date %>
 </p>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<% if @course.user.Instructor? %>
+  <%= link_to 'Edit', edit_course_path(@course) %> |
+  <%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+  <%= link_to 'Back', courses_path %>
