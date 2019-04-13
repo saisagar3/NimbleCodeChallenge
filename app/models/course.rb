@@ -1,5 +1,7 @@
 class Course < ApplicationRecord
-  belongs_to :user
+  has_many :subscribers, :dependent => :destroy
+  has_many :groups, :dependent => :destroy
+  has_many :users, through: :subscribers
 
   def to_s
    

@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum role: {'Instructor': 0, 'Student': 1, 'Others': 2}
+  has_many :subscribers, dependent: :destroy
+  has_many :coursers, through: :subscribers
+
 
   def to_s
     self.first_name
