@@ -6,9 +6,7 @@
   <thead>
     <tr>
       <th>Course name</th>
-      <th>Description</th>
-      <th>Start date</th>
-      <th>End date</th>
+      <th>Instructor</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,9 +15,7 @@
     <% @courses.each do |course| %>
       <tr>
         <td><%= course.course_name %></td>
-        <td><%= course.description %></td>
-        <td><%= course.start_date %></td>
-        <td><%= course.end_date %></td>
+        <td><%= course.user.first_name %></td>
         <td><%= link_to 'Show', course %></td>
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
