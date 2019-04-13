@@ -16,10 +16,6 @@
       <tr>
         <td><%= link_to course.course_name, course %></td>
         <td><%= course.user.first_name %></td>
-        <% if current_user.Instructor? %>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <% end %>
       </tr>
     <% end %>
   </tbody>
