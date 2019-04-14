@@ -1,0 +1,28 @@
+<%= form_for(@user, as: 'user', url: @user, method: 'put') do |f| %>
+  <%= render "devise/shared/error_messages", resource: @user %>
+  
+  <div class="field form-group">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autocomplete: "first name", class: 'form-control'  %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autocomplete: "last name", class: 'form-control'  %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :institute_id, "student ID/instructor ID" %><br />
+    <%= f.text_field :institute_id, class: 'form-control'  %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :citizen_id, "citizen ID" %><br />
+    <%= f.text_field :citizen_id, class: 'form-control'  %>
+  </div>
+
+  <br>
+  <div class="actions">
+    <%= f.submit "Update User", class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -9,25 +9,28 @@ class UserPolicy <  ApplicationPolicy
 
   def show?
     @role = user.role
-    if @role === 'Instructor' and @role === 'Student'
+    if @role === 'Instructor'
       true
     end
   end
 
   def create?
-    true
+    @role = user.role
+    if @role === 'Instructor'
+      true
+    end
   end
 
   def update?
     @role = user.role
-    if @role === 'Instructor' and @role === 'Student'
+    if @role === 'Instructor'
       true
     end
   end
 
   def destroy?
     @role = user.role
-    if @role === 'Instructor' and @role === 'Student'
+    if @role === 'Instructor'
       true
     end
   end
