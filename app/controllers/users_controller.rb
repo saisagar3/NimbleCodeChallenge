@@ -1,5 +1,4 @@
-class UserController < ApplicationController
-    class UsersController < ApplicationController
+class UsersController < ApplicationController
         before_action :set_user, except: [:index, :create, :new]
         before_action :authenticate_user!, except: []
       

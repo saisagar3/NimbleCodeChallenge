@@ -16,8 +16,7 @@
     <% @groups.each do |group| %>
       <tr>
         <td><%= link_to group.name, group %></td>
-        <td><%= group.subscribers.includes(:user).where(users: {role: User.Student}).count %></td>
-        
+        <td><%=  group.subscribers.includes(:user).where("users.role = 1").references(:users).count %></td>
       </tr>
     <% end %>
   </tbody>
