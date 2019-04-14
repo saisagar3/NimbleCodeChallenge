@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+<h1>User: <%= link_to @user.first_name, @user %></h1>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.first_name %>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @user.role   %>
+</p>
+
+<p>
+  <strong>Student ID:</strong>
+  <%= @user.institute_id %>
+</p>
+
+<p>
+  <strong>Citizen ID:</strong>
+  <%= @user.citizen_id %>
+</p>
+
+
+<% if current_user.Instructor? %>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+<% end %>
+<%= link_to 'Back', users_path %>
+
+<br>
