@@ -1,5 +1,8 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  include CourseSubscriptionsConcerns
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :subscribe, :unsubscribe,
+    :groups, :new_group, :create_group,
+    :subscribers]
   before_action :authenticate_user!
   # GET /courses
   # GET /courses.json

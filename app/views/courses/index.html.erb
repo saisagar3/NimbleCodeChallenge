@@ -14,11 +14,8 @@
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= course.course_name %></td>
-        <td><%= course.user.first_name %></td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to course.course_name, course %></td>
+        <%# <td><%= course.user.first_name</td> %> 
       </tr>
     <% end %>
   </tbody>
