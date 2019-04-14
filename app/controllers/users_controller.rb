@@ -5,7 +5,7 @@ class UsersController < ApplicationController
         # GET /users
         # GET /users.json
         def index
-          @users = User.where(role: Role.find(0))
+          @users = User.where(role: User.roles.find(1))
         end
       
         # GET /users/1
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
         # POST /users.json
         def create
           @user = User.new(user_params)
-          @user.role = User.roles.find(0)
+          @user.role = "Student"
           authorize @user
       
           respond_to do |format|
