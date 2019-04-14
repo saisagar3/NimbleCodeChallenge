@@ -5,7 +5,7 @@ class UsersController < ApplicationController
         # GET /users
         # GET /users.json
         def index
-          @users = User.where(role: User.roles.find(1))
+          @users = User.where("users.role = 1")
         end
       
         # GET /users/1
