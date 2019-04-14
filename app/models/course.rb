@@ -31,4 +31,8 @@ class Course < ApplicationRecord
     end
     return false
   end
+
+  def to_s
+    self.first_name
+  end
 end

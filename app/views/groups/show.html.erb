@@ -7,13 +7,11 @@
   <% end %>
 
 <% if @group.course.instructor? current_user %>
-  <%= link_to "Project", edit_project_name_group_path(@group) %>
-  <%= link_to 'Edit', edit_group_path(@group)%>
-  <%= link_to 'Destroy', @group, method: :delete, data: { confirm: 'Are you sure?' }%>
+  <%= link_to "Project", edit_project_name_group_path(@group), :class => "btn btn-light" %>
+  <%= link_to 'Edit', edit_group_path(@group), :class => "btn btn-dark"%>
 <% end %>
 
 
-<%= link_to 'Back', groups_course_path(@group.course) %>
 <br>
 <hr>
 <strong>Group Members</strong>
@@ -42,5 +40,5 @@
 </table>
 
 <% if current_user.Instructor? %>
-  <%= link_to "Add Students", add_subscribers_group_path(@group) %>
+  <%= link_to "Add Students", add_subscribers_group_path(@group), :class => "btn btn-primary" %>
 <% end %>

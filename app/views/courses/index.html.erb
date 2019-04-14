@@ -1,25 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Courses</h1>
+<h1><i>Courses</i></h1>
 
-<table>
+<div class="container">
+  <table class="table table-striped">
   <thead>
-    <tr>
-      <th>Course name</th>
-      <th colspan="3"></th>
-    </tr>
   </thead>
-
   <tbody>
+    <tr>
+    <td style="text-align:center"><strong><h3><i>Courses Name</i></h3></strong></td>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= link_to course.course_name, course %></td>
+        <td style="text-align:center"><%= link_to course.course_name, course %></td>
       </tr>
     <% end %>
   </tbody>
-</table>
-
+    </table>
+    </div>
+ 
 <br>
 <% if current_user.Instructor? %>
-<%= link_to 'New Course', new_course_path %>
+<%= link_to 'New Course', new_course_path, :class => "btn btn-success" %>
 <% end %>

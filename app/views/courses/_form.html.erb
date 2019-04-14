@@ -10,28 +10,29 @@
       </ul>
     </div>
   <% end %>
-
+<div class="container" style:align="center">
   <div class="field">
-    <%= form.label :course_name %>
-    <%= form.text_field :course_name %>
+    <%= form.label :course_name, "Course Name" %>
+    <%= form.text_field :course_name , class: 'form-control'%>
   </div>
-
+<br>
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: 'form-control' %>
   </div>
-
+<br>
   <div class="field">
     <%= form.label :start_date %>
-    <%= form.date_select :start_date %>
+    <%= form.date_select :start_date , class: 'form-control'%>
   </div>
-
+<br>
   <div class="field">
     <%= form.label :end_date %>
-    <%= form.date_select :end_date %>
+    <%= form.date_select :end_date , class: 'form-control'%>
   </div>
-
+<br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create Course", :class => "btn btn-info" %> 
   </div>
 <% end %>
+</div>
