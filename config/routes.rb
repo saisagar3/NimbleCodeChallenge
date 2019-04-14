@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   resources :groups do
     member do
+
+      get 'edit_project_name'
+      put 'update_project_name'
+
+      get 'edit_score'
+      put 'update_score'
       
       get 'add_subscribers', to: 'subscribers#add_subscribers'
       put 'add_subscriber', to: 'subscribers#add_subscriber'

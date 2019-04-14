@@ -54,7 +54,7 @@ module CourseSubscriptionsConcerns
     if not params[:student_id].blank?
       student_id = params[:student_id].downcase
       @filtered_subscribers = @filtered_subscribers.includes(:user)
-        .where("LOWER(users.instituteid) like ?", "%#{student_id}%").references(:users)
+        .where("LOWER(users.institute_id) like ?", "%#{student_id}%").references(:users)
     end
 
     if not params[:course].nil?

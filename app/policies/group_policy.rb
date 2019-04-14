@@ -1,14 +1,18 @@
 class GroupPolicy < ApplicationPolicy
   
   def show?
-    true
+    true    
   end  
   
   def create?
-    true
+    show?
   end
 
   def update?
+    create?
+  end
+
+  def destroy?
     create?
   end
 end

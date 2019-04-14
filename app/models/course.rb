@@ -16,5 +16,19 @@ class Course < ApplicationRecord
   def unsubscribe(user)
     self.subscribers.where(user: user).destroy_all
   end
-  
+
+  def group(user)
+    if self.subscribed? user
+      return self.subscribers.where(user: user).take.group
+    else
+      return nil
+    end
+  end
+
+  def instructor?(user)
+    if self.users.Instructor 
+      return true
+    end
+    return false
+  end
 end

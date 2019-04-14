@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  include GroupConcerns
+  before_action :set_group, except: [:index, :create, :new]
   before_action :authenticate_user!
 
   # GET /groups
@@ -12,6 +13,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    authorize @group
   end
 
   # GET /groups/new
@@ -59,6 +61,7 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
+    temp_course = @group.course
     @group.destroy
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<h1>Course: <%= link_to @group.course, @group.course %></h1>
+
+<%= form_with(model: @group, url:update_name_group_path(@group), method: 'put', local: true) do |form| %>
+  <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% @group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update"%>
+  </div>
+<% end %>
+<br>
+<%= link_to "Cancel", @group %>

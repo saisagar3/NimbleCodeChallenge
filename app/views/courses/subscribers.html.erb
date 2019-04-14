@@ -51,7 +51,7 @@
         <%= subscriber.user.last_name %>
       </td>
       <td>
-        <% if subscriber.user.student? %>
+        <% if subscriber.user.Student? %>
           <%= subscriber.user.institute_id %>
         <% else %>
           Not a student - <%= subscriber.user.role %>

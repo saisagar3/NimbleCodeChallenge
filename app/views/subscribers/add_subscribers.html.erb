@@ -1,0 +1,29 @@
+<strong>Group:</strong> <%= link_to @group.name, @group %>  <br>
+<table class="table table-hover">
+  <tr>
+    <th>Username</th>
+    <th>Role</th>
+    <th>Group</th>
+  </tr>
+  <tr>
+    <% for subscriber in @student_subscribers%>
+      <td>
+        <%= subscriber.user.first_name %>
+      </td>
+      <td>
+        <%= subscriber.user.role %>
+      </td>
+      <td>
+        <% if subscriber.group.nil? %>
+          ------
+        <% else %>
+          <%= link_to subscriber.group.name, subscriber.group %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to "Add to group", add_subscriber_group_path(@group, :subscriber_id => subscriber.id),
+          class: 'btn btn-success', method:"put" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
