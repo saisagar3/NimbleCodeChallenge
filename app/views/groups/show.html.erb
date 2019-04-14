@@ -1,24 +1,65 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Course: <%= link_to @group.course, @group.course %></h1>
+  <h2 style="display:inline"> Group: <%= @group.name %> </h2>
+  <% if @group.has_user? current_user %>
+    - <%= link_to 'Rename', edit_name_group_path(@group), class: 'btn btn-link' %>
+  <% end %>
+
+<% if @group.course.instructor? current_user %>
+  <p style='float:right'>
+  <%= link_to "Assign Project", edit_project_topic_group_path(@group), class: 'btn btn-primary' %>
+  <%= link_to 'Edit', edit_group_path(@group), class: 'btn btn-warning' %>
+  <%= link_to 'Destroy', @group, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  </p>
+<% end %>
+
 <p>
-  <strong>Name:</strong>
-  <%= @group.name %>
+  <strong>Grade:</strong>
+  <% if @group.grade.nil? %>
+    ungraded
+  <% else %>
+    <%= @group.grade %>
+  <% end %>
+  <% if @group.course.instructor? current_user %>
+    - <%= link_to "Change grade", edit_grade_group_path(@group) %>
+  <% end %>
 </p>
 
 <p>
-  <strong>Project name:</strong>
-  <%= @group.project_name %>
+  <strong>Project topic:</strong>
+  <%= @group.project_topic %>
 </p>
 
-<p>
-  <strong>Score:</strong>
-  <%= @group.score %>
-</p>
+<%= link_to 'Back', groups_course_path(@group.course) %>
+<br>
 
-<p>
-  <strong>Course:</strong>
-  <%= @group.course %>
-</p>
+<hr>
+<strong>Group members:</strong>
+<table class="table table-hover">
+  <tr>
+    <th>Username</th>
+    <th>Role</th>
+  </tr>
+  <%# Loop through subscribers who are part of this group %>
+  <% for subscriber in @group.subscribers %>
+    <tr>
+      <td>
+        <%= subscriber.user.username %>
+      </td>
+      <td>
+        <%= subscriber.user.role.name %>
+      </td>
+      <% if current_user.instructor? %>
+        <td>
+          <%= link_to "Remove from group", remove_subscriber_group_path(@group, :subscriber_id => subscriber.id),
+            class: 'btn btn-danger', method:"delete" %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<% if current_user.instructor? %>
+  <%= link_to "Add Subscribers to Group.", add_subscribers_group_path(@group), class: 'btn btn-success' %>
+<% end %>

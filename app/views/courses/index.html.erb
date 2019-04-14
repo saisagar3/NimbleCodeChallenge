@@ -15,7 +15,7 @@
     <% @courses.each do |course| %>
       <tr>
         <td><%= link_to course.course_name, course %></td>
-        <td><%= course.user.first_name %></td>
+        <%# <td><%= course.user.first_name</td> %> 
       </tr>
     <% end %>
   </tbody>

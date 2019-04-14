@@ -15,4 +15,14 @@ class User < ApplicationRecord
   def name
     "#{self.first_name} #{self.last_name}"
   end
+
+  def course_instructor?(course)
+    if not self.Instructor?
+      return false
+    end
+    if course.user.id == self.id
+      return true
+    end
+    false
+  end
 end

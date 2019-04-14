@@ -5,14 +5,10 @@ class GroupPolicy < ApplicationPolicy
   end  
   
   def create?
-    if Course.where( subscriber_id: Subscriber.where( user_id: user.id).first.id).exists? 
-        true
-    end
+    true
   end
 
   def update?
-    if user.user_role === 'student'
-      true
-    end
+    create?
   end
 end

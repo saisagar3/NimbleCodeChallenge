@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Course: <%= link_to @course.course_name, @course %></h1>
+
+<h2> Subscribers: </h2>
+
+
+<style type="text/css" media="screen">
+  .form-group {
+    padding-left: 10px;
+  }
+  label {
+    padding-right: 5px;
+  }
+</style>
+<%= form_tag(subscribers_course_path(@course), class: 'form form-inline', method: 'get') do %>
+
+  <span class="field form-group">
+    <%= label_tag :name %>
+    <%= text_field_tag :name, params[:name], class: 'form-control', placeholder: 'name' %>
+  </span>
+
+  <span class="field form-group">
+    <%= label_tag :student_id, "Student ID" %>
+    <%= text_field_tag :student_id, params[:student_id], class: 'form-control', placeholder: 'Student ID' %>
+  </span>
+
+  <span class="field form-group">
+    <%= label_tag :group_id %>
+    <%= collection_select :course, :group_ids, @course.groups, :id, :name, {:include_blank => 'Select Group',  :selected => "" }, { :class => 'form-control' } %>
+  </span>
+
+  <span class="actions">
+    <%= submit_tag "filter", class: 'form-control' %>
+  </span>
+  
+<% end %>
+
+<%= link_to "remove filters", subscribers_course_path(@course) %>
+
+<table class="table table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Student ID</th>
+    <th>Group</th>
+  </tr>
+  <% for subscriber in @filtered_subscribers %>
+    <tr>
+      <td>
+        <%= subscriber.user.first_name %>
+        <%= subscriber.user.last_name %>
+      </td>
+      <td>
+        <% if subscriber.user.student? %>
+          <%= subscriber.user.institute_id %>
+        <% else %>
+          Not a student - <%= subscriber.user.role %>
+        <% end %>
+      </td>
+      <td>
+        <% if subscriber.group.nil? %>
+          *group not assigned*
+        <% else %>
+          <%= link_to subscriber.group.name, subscriber.group %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
