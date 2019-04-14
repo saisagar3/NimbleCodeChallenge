@@ -1,24 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Course: <%= @course.course_name %></h1>
+<h2>Course: <%= @course.course_name %></h2>
 <% if current_user.Instructor? %>
-  <p style='float:right'>
-  <%= link_to 'Edit', edit_course_path(@course), class: 'btn btn-warning' %> 
-  <%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-  <%= link_to "Subscribers", subscribers_course_path(@course), method: :get, class: 'btn btn btn-primary' %> <br>
-  </p>
+  <%= link_to 'Edit', edit_course_path(@course) %> 
+  <%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' }%>
+  <%= link_to "Subscribers", subscribers_course_path(@course), method: :get%> <br>
 <% end %>
 
 <p>
 <% if @course.subscribed?(current_user) %>
-  <%= link_to "Exit!", unsubscribe_course_path(@course), method: :delete, class: 'btn btn-danger' %>
+  <%= link_to "Leave Course", unsubscribe_course_path(@course), method: :delete%>
 <% else %>
-  <%= link_to "Join!", subscribe_course_path(@course), method: :post, class: 'btn btn-success' %>
+  <%= link_to "Join Course", subscribe_course_path(@course), method: :post%>
 <% end %>
-<%= link_to 'Back', courses_path, class: 'btn btn-info' %>
+<%= link_to 'Back', courses_path%>
 </p>
 
-<hr>
 
 <% if  @course.subscribed? current_user %>
   <% if @group.nil?  %>
@@ -45,7 +42,7 @@
       <% @course.groups.each do |group| %>
         <tr>
           <td><%= link_to group.name, group %></td>
-          <td><%= group.subscribers.includes(:user).where(users: {role: User.roles.first}).count %></td>
+          <td><%= group.subscribers.includes(:user).where(users: {role: User.Student}).count %></td>
         </tr>
       <% end %>
     </tbody>

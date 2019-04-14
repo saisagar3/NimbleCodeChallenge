@@ -1,42 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Course: <%= link_to @course.course_name, @course %></h1>
+<h3>Course: <%= link_to @course.course_name, @course %></h3>
 
 <h2> Subscribers: </h2>
 
 
-<style type="text/css" media="screen">
-  .form-group {
-    padding-left: 10px;
-  }
-  label {
-    padding-right: 5px;
-  }
-</style>
-<%= form_tag(subscribers_course_path(@course), class: 'form form-inline', method: 'get') do %>
 
-  <span class="field form-group">
+<%= form_tag(subscribers_course_path(@course), method: 'get') do %>
+
+  <div class="field ">
     <%= label_tag :name %>
-    <%= text_field_tag :name, params[:name], class: 'form-control', placeholder: 'name' %>
-  </span>
+    <%= text_field_tag :name, params[:name], placeholder: 'name' %>
+  </div>
 
-  <span class="field form-group">
+  <div class="field">
     <%= label_tag :student_id, "Student ID" %>
-    <%= text_field_tag :student_id, params[:student_id], class: 'form-control', placeholder: 'Student ID' %>
-  </span>
+    <%= text_field_tag :student_id, params[:student_id], placeholder: 'Student ID' %>
+  </div>
 
-  <span class="field form-group">
+  <div class="field">
     <%= label_tag :group_id %>
-    <%= collection_select :course, :group_ids, @course.groups, :id, :name, {:include_blank => 'Select Group',  :selected => "" }, { :class => 'form-control' } %>
-  </span>
-
-  <span class="actions">
+    <%= collection_select :course, :group_ids, @course.groups, :id, :name, {:include_blank => 'Select Group',  :selected => "" }%>
+  </div>
+<br><br>
+   <%= submit_tag "filter" %>
+  <%# <span class="actions">
     <%= submit_tag "filter", class: 'form-control' %>
-  </span>
+  <%#/span> %>
   
 <% end %>
 
-<%= link_to "remove filters", subscribers_course_path(@course) %>
 
 <table class="table table-hover">
   <tr>
@@ -59,7 +52,7 @@
       </td>
       <td>
         <% if subscriber.group.nil? %>
-          *group not assigned*
+          <%= link_to "Assign Group?", new_group_course_path(@course)%> 
         <% else %>
           <%= link_to subscriber.group.name, subscriber.group %>
         <% end %>
