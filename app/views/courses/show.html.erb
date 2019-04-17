@@ -30,11 +30,11 @@
 
   <h2><i>Groups</i></h2>
 
-  <table class="table table-striped">
+  <table class="table table-striped text-center">
     <thead>
       <tr>
-        <th style="text-align:center"><h3>Name</h3></th>
-        <th style="text-align:center"><h3>Number of Students</h3></th>
+        <th><h3>Name</h3></th>
+        <th><h3>Number of Students</h3></th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -42,7 +42,7 @@
     <tbody>
       <% @course.groups.each do |group| %>
         <tr>
-          <td style="text-align:center"><%= link_to group.name, group %></td>
+          <td><%= link_to group.name, group %></td>
           <td><%= group.subscribers.includes(:user).where(users: {role: User.Student}).count %></td>
         </tr>
       <% end %>

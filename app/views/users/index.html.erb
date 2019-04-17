@@ -2,21 +2,21 @@
 <div class="container">
 <h1><i>Students</i></h1>
 
-<table class="table table-striped">
+<table class="table table-striped text-center">
   <thead>
     <tr>
-      <th style="text-align:center">First name</th>
-      <th style="text-align:center">Last name</th>
-      <th style="text-align:center">Take Action</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Take Action</th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
         <tr>
-          <td style="text-align:center"><%= user.first_name %></td>
-          <td style="text-align:center"><%= user.last_name %></td>
-          <td style="text-align:center"><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-warning' %> &nbsp;
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-warning' %> &nbsp;
           <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
         </tr>
     <% end %>

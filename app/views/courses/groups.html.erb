@@ -3,11 +3,11 @@
 <h2>Groups</h2>
 
 <div class="container">
-<table class="table table-striped">
+<table class="table table-striped text-center">
   <thead>
     <tr>
-      <th style="text-align:center">Name</th>
-      <th style="text-align:center">Number of Students</th>
+      <th>Name</th>
+      <th>Number of Students</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,8 +15,8 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td style="text-align:center"><%= link_to group.name, group %></td>
-        <td style="text-align:center"><%= group.subscribers.includes(:user).where("users.role = 1 ").references(:users).count %></td>
+        <td><%= link_to group.name, group %></td>
+        <td><%= group.subscribers.includes(:user).where("users.role = 1 ").references(:users).count %></td>
       </tr>
     <% end %>
   </tbody>
