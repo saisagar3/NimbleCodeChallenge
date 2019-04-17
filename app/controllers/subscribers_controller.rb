@@ -1,15 +1,20 @@
 class SubscribersController < ApplicationController
 
-  def add_subscribers
-    @group = Group.find(params[:id])
+  def new
+    @group = Group.find(params[:group_id])
     authorize @group, :create?
    
     @course = @group.course    
     @student_subscribers = @course.subscribers
       .where("group_id !=? or group_id is null", @group.id)
   end
+
+  def show
+    group = Group.find(params[:id])
+    redirect_to group_path(group)
+  end
     
-  def add_subscriber
+  def create
     group = Group.find(params[:id])
     authorize group, :create?
     
@@ -18,14 +23,14 @@ class SubscribersController < ApplicationController
     
     if subscriber.save
       flash[:alert] = "Successfully added!"
-      redirect_to add_subscribers_group_path(group)
+      redirect_to group_subscriber_path(group)
     else
       flash[:error] = "Failed to add user!"
-      redirect_to add_subscribers_group_path(group)
+      redirect_to group_subscriber_path(group)
     end
   end
     
-  def remove_subscriber
+  def destroy
     group = Group.find(params[:id])
     authorize group, :create?
     

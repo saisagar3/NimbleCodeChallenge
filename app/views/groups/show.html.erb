@@ -3,7 +3,7 @@
   <h3> Group: <%= @group.name %> </h3>
   <h3> Project: <%= @group.project_name %> </h3>
   <% if @group.has_user? current_user %>
-    - <%= link_to 'Rename', edit_name_group_path(@group), class: 'btn btn-link' %>
+     <%= link_to 'Rename', edit_name_group_path(@group), class: 'btn btn-primary' %>
   <% end %>
 
 <% if @group.course.instructor? current_user %>
@@ -32,7 +32,7 @@
       </td>
       <% if current_user.Instructor? %>
         <td>
-          <%= link_to "Remove", remove_subscriber_group_path(@group, :subscriber_id => subscriber.id), method:"delete" %>
+          <%= link_to "Remove", group_subscriber_path(@group, :subscriber_id => subscriber.id), method:"delete" %>
         </td>
       <% end %>
     </tr>
@@ -40,5 +40,5 @@
 </table>
 
 <% if current_user.Instructor? %>
-  <%= link_to "Add Students", add_subscribers_group_path(@group), :class => "btn btn-primary" %>
+  <%= link_to "Add Students", new_group_subscriber_path(@group), :class => "btn btn-primary" %>
 <% end %>

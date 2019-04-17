@@ -30,6 +30,6 @@ class Course < ApplicationRecord
   end
 
   def to_s
-    self.first_name
+    self.course_name
   end
 end

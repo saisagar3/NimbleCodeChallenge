@@ -8,7 +8,7 @@ class User < ApplicationRecord
   enum role: {'Instructor': 0, 'Student': 1, 'Others': 2}
   
   has_many :subscribers, dependent: :destroy
-  has_many :coursers, through: :subscribers
+  has_many :courses, through: :subscribers
 
 
   def to_s

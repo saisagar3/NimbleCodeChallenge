@@ -24,8 +24,8 @@
         <% end %>
       </td>
       <td>
-        <%= link_to "Add to group", add_subscriber_group_path(@group, :subscriber_id => subscriber.id),
-          class: 'btn btn-success', method:"put" %>
+        <%= link_to "Add to group", group_subscriber_path(@group, :id => subscriber.id),
+          class: 'btn btn-success', method:"post" %>
       </td>
     </tr>
   <% end %>

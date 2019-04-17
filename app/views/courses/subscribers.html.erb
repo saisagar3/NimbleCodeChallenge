@@ -23,10 +23,8 @@
     <%= collection_select :course, :group_ids, @course.groups, :id, :name, {:include_blank => 'Select Group',  :selected => "" }%>
   </div>
 <br><br>
-   <%= submit_tag "filter" %>
-  <%# <span class="actions">
-    <%= submit_tag "filter", class: 'form-control' %>
-  <%#/span> %>
+  <%= submit_tag "filter" %>
+ 
   
 <% end %>
 

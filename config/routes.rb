@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :groups do
+    resources :subscribers
     member do
+      post 'subscribers/:subscriber_id', to: 'subscribers#create'
+      get 'edit_name'
+      put 'update_name'
 
       get 'edit_project_name'
       put 'update_project_name'
@@ -8,9 +12,9 @@ Rails.application.routes.draw do
       get 'edit_score'
       put 'update_score'
       
-      get 'add_subscribers', to: 'subscribers#add_subscribers'
-      put 'add_subscriber', to: 'subscribers#add_subscriber'
-      delete 'remove_subscriber', to: 'subscribers#remove_subscriber'
+      # get 'add_subscribers', to: 'subscribers#add_subscribers'
+      # put 'add_subscriber', to: 'subscribers#add_subscriber'
+      # delete 'remove_subscriber', to: 'subscribers#remove_subscriber'
 
     end
   end
