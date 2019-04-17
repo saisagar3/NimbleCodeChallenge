@@ -16,7 +16,7 @@
     <% @groups.each do |group| %>
       <tr>
         <td style="text-align:center"><%= link_to group.name, group %></td>
-        <td style="text-align:center"><%=  Group.subscribers.includes(:user).where("users.role = ").references(:users).count %></td>
+        <td style="text-align:center"><%= group.subscribers.includes(:user).where("users.role = 1 ").references(:users).count %></td>
       </tr>
     <% end %>
   </tbody>

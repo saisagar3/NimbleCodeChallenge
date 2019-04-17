@@ -8,7 +8,7 @@ class Course < ApplicationRecord
   end
 
   def subscribe(user)
-    if not self.subscribed? user
+    unless self.subscribed? user
       self.users << user
     end
   end
@@ -19,9 +19,7 @@ class Course < ApplicationRecord
 
   def group(user)
     if self.subscribed? user
-      return self.subscribers.where(user: user).take.group
-    else
-      return nil
+      # return self.subscribers.where(user: user).take.group
     end
   end
 
@@ -29,7 +27,6 @@ class Course < ApplicationRecord
     if self.users.Instructor 
       return true
     end
-    return false
   end
 
   def to_s
