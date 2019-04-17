@@ -5,45 +5,33 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_params, only: [:update]
 
 # GET /resource/sign_up
- def new
-   super
- end
+  def new
+    super
+  end
 
 #  POST /resource
   def create
     role = params[:user][:role]
-   
     if role.blank?
       flash[:error] = "Invalid role specified."
       redirect_to "/users/sign_up"
-      return
+    return
     end
     role = User.roles.find(role)
 
     institute_id = params[:user][:institute_id]
 
     super
-
-#    if role == 'Instructor'
-#           super
-#    end
-#
-#    if role == 'Student'
-#           super
-#    end
-#
-#    if role == 'Other'
-#           super
-#    end
   end
+  
   def edit
-     super
-   end
+    super
+  end
 
   # PUT /resource
-   def update
-     super
-   end
+  def update
+    super
+  end
 
   # DELETE /resource
   def destroy

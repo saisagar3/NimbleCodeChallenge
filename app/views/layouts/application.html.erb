@@ -34,30 +34,31 @@
 				  <%= link_to "Sign up", new_user_registration_path, :class => "btn btn-warning" %> or
 				  <%= link_to "Sign in", new_user_session_path , :class => "btn btn-success"%>.
 			  </li>
-				<% end %>	
-				</ul>
-		  </nav>
+			<% end %>	
+		</ul>
+	</nav>
 
-			<div id="container" align="center">
+	<div id="container" align="center">
 
-      <div id="wrapper" class="container">
-        <br>
-        <% if flash[:notice] %>
-          <div class="flash notice">
-            <%= flash[:notice] %>
-          </div>
-        <% end %>
-        <% if flash[:alert] %>
-          <div class="flash alert">
-            <%= flash[:alert] %>
-          </div>
-        <% end %>
-        <% if flash[:error] %>
-          <div class="flash error">
-            <%= flash[:error] %>
-          </div>
-        <% end %>
-        <%= yield %>
-      </div>
+    <div id="wrapper" class="container">
+    <br>
+      <% if flash[:notice] %>
+        <div class="flash notice">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="flash alert">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+      <% if flash[:error] %>
+        <div class="flash error">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </div>
   </body>
 </html>
